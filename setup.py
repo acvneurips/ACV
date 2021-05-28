@@ -15,8 +15,8 @@ cy_extcache = Extension('cyext_acv_cache', ['acv_explainers/cyext_acv/cyext_acv_
                     extra_link_args=['-fopenmp'])
 
 setup(name='acv',
-      author='Salim I.Amoukou',
-      author_email='salim.ibrahim-amoukou@universite-paris-saclay.fr',
+      author='noname',
+      author_email='noname',
       version='1.0',
       description='ACV function optimized in C',
       include_dirs=[numpy.get_include()],
