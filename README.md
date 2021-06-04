@@ -26,6 +26,7 @@ $ python setup.py install
 The default Apple Clang compiler does not support OpenMP.
 To solve this issue, obtain the lastest gcc version with Homebrew that has multi-threading enabled: 
 see for example [pysteps installation for OSX.](https://pypi.org/project/pysteps/1.0.0/)
+**Windows**: Install MinGW (a Windows distribution of gcc) or Microsoft’s Visual C
 
 ## How does ACV work?
 ACV works for XGBoost, LightGBM, CatBoostClassifier, scikit-learn and pyspark tree models. 
