@@ -153,7 +153,7 @@ coalition = [[0, 1, 2], [3, 4], [5, 6]]
 forest_sv = acvtree.shap_values(X, C=coalition)
 ```
 
-# Remarks
+### Remarks
 The computation for a regressor is similar, you have to replace "_clf" in each function with "_reg". If you don't want to use
 multi-threaded (due to scaling or memory problem), you have to add "_nopa" to each function (e.g. compute_sdp_clf ==> compute_sdp_clf_nopa).
 You can also compute the different values needed in cache by setting cache=True 
