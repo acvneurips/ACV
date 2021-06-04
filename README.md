@@ -156,10 +156,12 @@ In addition, we can compute the SV given any coalitions. For example, if we want
 coalition = [[0, 1, 2], [3, 4], [5, 6]]
 forest_sv = acvtree.shap_values(X, C=coalition, num_threads=5)
 ```
-**Remarks:** The computation for a regressor is similar, you have to replace "_clf" in each function with "_reg". If you don't want to use
-multi-threaded (due to scaling or memory problem), you have to add _nopa to each function (e.g. compute_sdp_clf ==> compute_sdp_clf_nopa).
+
+# Remarks
+The computation for a regressor is similar, you have to replace "_clf" in each function with "_reg". If you don't want to use
+multi-threaded (due to scaling or memory problem), you have to add "_nopa" to each function (e.g. compute_sdp_clf ==> compute_sdp_clf_nopa).
 You can also compute the different values needed in cache by setting cache=True 
-in ACVTree initialization ACVTree(model, data, cache=True).
+in ACVTree initialization e.g. ACVTree(model, data, cache=True).
 ## Examples and tutorials (a lot more to come...)
 We can find a tutorial of the usages of ACV in [demo_acv](https://github.com/acvneurips/ACV/tree/main/notebooks/demo_acv_explainer) and 
 the notebooks below demonstrate different use cases for ACV. Look inside the notebook directory of the repository if you want to try playing with the original notebooks yourself.
