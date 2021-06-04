@@ -13,7 +13,7 @@ import pstats, cProfile
 
 random.seed(2021)
 np.random.seed(2021)
-data_frame = pd.read_csv('/home/samoukou/Documents/ACV/data/lucas0_train.csv')
+data_frame = pd.read_csv('/home/xxxxx/Documents/ACV/data/lucas0_train.csv')
 
 y = data_frame.Lung_cancer.values
 data_frame.drop(['Lung_cancer'], axis=1, inplace=True)
