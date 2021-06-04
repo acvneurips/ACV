@@ -47,7 +47,7 @@ Given <img src="https://latex.codecogs.com/gif.latex?x%20%3D%20%28x_S%2C%20x_%7B
 * **How to compute <img src="https://latex.codecogs.com/gif.latex?SDP_S%28x%2C%20f%29" />  ?**
 
 ```python
-sdp = acvtree.compute_sdp_clf(X, S, data, num_threads=5)
+sdp = acvtree.compute_sdp_clf(X, S, data)
 
 """
 Description of the arguments    
@@ -55,14 +55,13 @@ Description of the arguments
 X (np.ndarray[2]): observations        
 S (np.ndarray[1]): index of variables on which we want to compute the SDP
 data (np.ndarray[2]): data used to compute the SDP
-num_threads (int): how many threads to use for parallelism 
 """
 ```
 * **How to compute the Sufficient Coalition <img src="https://latex.codecogs.com/gif.latex?S^\star" />** ?
 ```python 
 forest = RandomForestClassifier()
 #...trained the model
-sdp_importance, sdp_index, size, sdp = acvtree.importance_sdp_clf(X, data, C=[[]], global_proba=0.9, num_threads=5)
+sdp_importance, sdp_index, size, sdp = acvtree.importance_sdp_clf(X, data, C=[[]], global_proba=0.9)
 
 """
 Description of the arguments
@@ -79,7 +78,7 @@ sdp[i] corresponds to the SDP value of the $S^\star$ of observation i
 
 *  **How to compute the Global SDP importance ?**
 ```python
-sdp_importance, sdp_index, size, sdp = acvtree.importance_sdp_clf(X, data, C=[[]], global_proba=0.9, num_threads=5)
+sdp_importance, sdp_index, size, sdp = acvtree.importance_sdp_clf(X, data, C=[[]], global_proba=0.9)
 
 """
 Description of the arguments
@@ -88,7 +87,6 @@ X (np.ndarray[2]): observations
 data (np.ndarray[2]): data used for the estimation
 C (list[list]): list of the index of variables group together
 global_proba(double): the level of the SDP, default value = 0.9
-num_threads (int): how many threads to use for parallelism 
 
 sdp_importance:= corresponds to the global sdp of each variable
 """
@@ -103,7 +101,7 @@ The Active Shapley values is a SV based on a new game defined in the Paper ([Acc
 import acv_explainers
 
 # First, we need to compute the Active and Null coalition
-sdp_importance, sdp_index, size, sdp = acvtree.importance_sdp_clf(X, data, C, global_proba, num_threads=5)
+sdp_importance, sdp_index, size, sdp = acvtree.importance_sdp_clf(X, data, C, global_proba)
 
 # Then, we used the active coalition found to compute the Active Shapley values.
 S_star, N_star = acv_explainers.utils.get_null_coalition(sdp_index, size)
@@ -117,7 +115,6 @@ X (np.ndarray[2]): observations
 C (list[list]): list of the different coalition of variables by their index
 S_star (np.ndarray[2]): index of variables in the Sufficient Coalition
 N_star (np.ndarray[2]): index of the remaining variables
-num_threads (int): how many threads to use for parallelism 
 """
 ```
 
@@ -133,7 +130,6 @@ X (np.ndarray[2]): observations
 C (list[list]): list of the different coalition of variables by their index
 S_star (list): index of variables in the Sufficient Coalition
 N_star (list): index of the remaining variables
-num_threads (int): how many threads to use for parallelism 
 """
 ```
 
@@ -147,14 +143,14 @@ Let assume we have a categorical variable Y with k modalities that we encoded by
 # transformed into [Y_0, Y_1, Y_2] and [Z_0, Z_1, Z_2]
 
 cat_index = [[0, 1, 2], [3, 4, 5]]
-forest_sv = acvtree.shap_values(X, C=cat_index, num_threads=5)
+forest_sv = acvtree.shap_values(X, C=cat_index)
 ```
 In addition, we can compute the SV given any coalitions. For example, if we want the following coalition <img src="https://latex.codecogs.com/gif.latex?C_0%20%3D%20%28X_0%2C%20X_1%2C%20X_2%29%2C%20C_1%3D%28X_3%2C%20X_4%29%2C%20C_2%3D%28X_5%2C%20X_6%29" />
 
 ```python
 
 coalition = [[0, 1, 2], [3, 4], [5, 6]]
-forest_sv = acvtree.shap_values(X, C=coalition, num_threads=5)
+forest_sv = acvtree.shap_values(X, C=coalition)
 ```
 
 # Remarks
