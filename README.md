@@ -22,7 +22,7 @@ Install the acv package:
 ```
 $ python setup.py install 
 ```
-**OSX users**: ACV uses Cython extensions that need to be compiled with multi-threading support enabled. 
+**OSX**: ACV uses Cython extensions that need to be compiled with multi-threading support enabled. 
 The default Apple Clang compiler does not support OpenMP.
 To solve this issue, obtain the lastest gcc version with Homebrew that has multi-threading enabled: 
 see for example [pysteps installation for OSX.](https://pypi.org/project/pysteps/1.0.0/)
@@ -90,7 +90,7 @@ C (list[list]): list of the index of variables group together
 global_proba(double): the level of the SDP, default value = 0.9
 num_threads (int): how many threads to use for parallelism 
 
-sdp_importance:= corresponds to the global sdp of each variables 
+sdp_importance:= corresponds to the global sdp of each variable
 """
 ```
 ### Active Shapley values
