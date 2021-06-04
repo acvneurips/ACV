@@ -162,4 +162,4 @@ We can find a tutorial of the usages of ACV in [demo_acv](https://github.com/acv
 the notebooks below demonstrate different use cases for ACV. Look inside the notebook directory of the repository if you want to try playing with the original notebooks yourself.
 
 
-* [Experiments of the papers](https://github.com/acvneurips/ACV/tree/main/notebooks/experiments_paper)
+* [Experiments of the paper](https://github.com/acvneurips/ACV/tree/main/notebooks/experiments_paper)
