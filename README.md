@@ -119,9 +119,11 @@ S_star (np.ndarray[2]): index of variables in the Sufficient Coalition
 N_star (np.ndarray[2]): index of the remaining variables
 num_threads (int): how many threads to use for parallelism 
 """
-# We can also compute ACV with the same active and null coalition for each observations.
-# This is much faster than the previous method.
+```
 
+We can also compute ACV with the same active and null coalition for all observations.
+This is much faster than the previous method.
+```python
 forest_acv = acvtree.shap_values_acv(X, C, S_star, N_star)
 
 """
