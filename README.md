@@ -2,11 +2,11 @@
 
 ACV is a python library that aims to explain any machine learning model. It provides explanations based on two approaches:
 * Same Decision Probability (SDP)
-* A coalitional version of Shapley values
+* A coalitional version (Active) of Shapley values
 
 In addition, we use the coalitional version of SV to properly handle categorical variables in the computation of SV.
 
-See paper "The Shapley Value of coalition of variables provides better explanations" for details.
+See paper [Accurate and robust Shapley Values for explaining predictions and focusing on local important variables](https://github.com/acvneurips/ACV/tree/main/docs) for details.
 
 ## Requirements
 Python 3.6+ 
@@ -20,12 +20,13 @@ $ pip install -r requirements.txt
 
 Install the acv package:
 ```
-$ python3 setup.py install 
+$ python setup.py install 
 ```
 **OSX users**: ACV uses Cython extensions that need to be compiled with multi-threading support enabled. 
 The default Apple Clang compiler does not support OpenMP.
 To solve this issue, obtain the lastest gcc version with Homebrew that has multi-threading enabled: 
 see for example [pysteps installation for OSX.](https://pypi.org/project/pysteps/1.0.0/)
+
 ## How does ACV work?
 ACV works for XGBoost, LightGBM, CatBoostClassifier, scikit-learn and pyspark tree models. 
 To use it, we need to transform our model into ACVTree. 
@@ -138,7 +139,7 @@ Let assume we have a categorical variable Y with k modalities that we encoded by
 ```python
 
 # cat_index := list(list) that contains the index of the dummies or one-hot variables grouped 
-# together for each variable. For example, we have only 2 categorical variables Y, Z 
+# together for each variable. For example, if we have only 2 categorical variables Y, Z 
 # transformed into [Y_0, Y_1, Y_2] and [Z_0, Z_1, Z_2]
 
 cat_index = [[0, 1, 2], [3, 4, 5]]
@@ -151,13 +152,13 @@ In addition, we can compute the SV given any coalitions. For example, if we want
 coalition = [[0, 1, 2], [3, 4], [5, 6]]
 forest_sv = acvtree.shap_values(X, C=coalition, num_threads=5)
 ```
-*Remarks:* The computation for a regressor is similar, we just need to replace "_clf" in each function with "_reg".
-
+**Remarks:** The computation for a regressor is similar, you have to replace "_clf" in each function with "_reg". If you don't want to use
+multi-threaded (due to scaling or memory problem), you have to add _nopa to each function (e.g. compute_sdp_clf ==> compute_sdp_clf_nopa).
+You can also compute the different values needed in cache by setting cache=True 
+in ACVTree initialization ACVTree(model, data, cache=True).
 ## Examples and tutorials (a lot more to come...)
-We can find a tutorial of the usages of ACV in [demo_acv](https://github.com/salimamoukou/acv00/blob/main/notebooks/demo_acv_explainer/demo_acv_explainers.ipynb) and 
+We can find a tutorial of the usages of ACV in [demo_acv](https://github.com/acvneurips/ACV/tree/main/notebooks/demo_acv_explainer) and 
 the notebooks below demonstrate different use cases for ACV. Look inside the notebook directory of the repository if you want to try playing with the original notebooks yourself.
 
-## Experiments of the papers
-* [Comparisons of the different estimators](https://github.com/salimamoukou/acv00/blob/main/notebooks/experiments_paper/comparisons_of_the_different_estimators.ipynb)
-* [Comparisons of SV on toy model: Coalition or SUM ?](https://github.com/salimamoukou/acv00/blob/main/notebooks/experiments_paper/coalition_or_sum_toy_model.ipynb)
-* [Comparisons of SV on Census: Coalition or SUM ?](https://github.com/salimamoukou/acv00/blob/main/notebooks/experiments_paper/coalition_or_sum_adult.ipynb)
+
+* [Experiments of the papers](https://github.com/acvneurips/ACV/tree/main/notebooks/experiments_paper)
