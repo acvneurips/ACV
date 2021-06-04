@@ -26,6 +26,7 @@ $ python setup.py install
 The default Apple Clang compiler does not support OpenMP.
 To solve this issue, obtain the lastest gcc version with Homebrew that has multi-threading enabled: 
 see for example [pysteps installation for OSX.](https://pypi.org/project/pysteps/1.0.0/)
+
 **Windows**: Install MinGW (a Windows distribution of gcc) or Microsoft’s Visual C
 
 ## How does ACV work?
@@ -94,7 +95,7 @@ sdp_importance:= corresponds to the global sdp of each variables
 ```
 ### Active Shapley values
 
-The Active Shapley values is a SV based on a new game defined in the Paper ("The Shapley Value of coalition of variables provides better explanations") such that null (non-important) has zero SV and the "payout" is fairly distribute among active variables.
+The Active Shapley values is a SV based on a new game defined in the Paper ([Accurate and robust Shapley Values for explaining predictions and focusing on local important variables](https://github.com/acvneurips/ACV/tree/main/docs)) such that null (non-important) has zero SV and the "payout" is fairly distribute among active variables.
 
 * **How to compute Active Shapley values ?**
 
